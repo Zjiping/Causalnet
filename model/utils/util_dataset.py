@@ -47,11 +47,17 @@ def get_formated_dataset(path, dataset, fold='fold2'):
     keys: time_since_start, time_since_last_event, type_event
     """
     ds = read_csv(path, dataset)
-    true_cm = read_dag(path, dataset)
-    topology = read_topology(path, dataset)
-    prior_cm = read_prior(path, dataset)
-    
     ds = ds.sort_values(by='start_timestamp')
+
+    # true_cm = read_dag(path, dataset)
+    # topology = read_topology(path, dataset)
+    # prior_cm = read_prior(path, dataset)
+
+    alarm_ids_unique = sorted(ds['alarm_id'].unique())
+    type_num = len(alarm_ids_unique)
+    topology = np.zeros((1, 1))
+    true_cm = None  
+    prior_cm = np.full((type_num, type_num), -1)
     
     alarm_ids = ds['alarm_id'].tolist()
     device_ids = ds['device_id'].tolist()
