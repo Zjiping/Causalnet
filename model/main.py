@@ -19,9 +19,9 @@ from utils.util_loss import *
 from utils.util_os import count_subdirectories, save_graph_or_decay
 
 # Project Dir
-proj_dir = '/home/user_name/causalnet'
+proj_dir = '../'
 # Dataset Dir
-dataset_dir = '/home/user_name/causalnet/datasets/'
+dataset_dir = '../datasets/pcic21/'
 
 
 class CausalNET(object):
